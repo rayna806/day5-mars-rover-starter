@@ -61,5 +61,31 @@ class DemoTest {
         marsRover.excuteCommand(command);
         assertEquals("0 0 S",marsRover.toString());
     }
-
+    @Test
+    public void should_return_direction_E_when_input_command_R_direction_N() {
+        String command = "R";
+        MarsRover marsRover = new MarsRover(0, 0, "N");
+        marsRover.excuteCommand(command);
+        assertEquals("0 0 E",marsRover.toString());
+    }
+    @Test
+    public void should_return_direction_S_when_input_command_R_direction_E() {
+        String command = "R";
+        MarsRover marsRover = new MarsRover(0, 0, "E");
+        marsRover.excuteCommand(command);
+        assertEquals("0 0 S",marsRover.toString());
+    }
+    @Test
+    public void should_return_direction_W_when_input_command_R_direction_S() {
+        String command = "R";
+        MarsRover marsRover = new MarsRover(0, 0, "S");
+        marsRover.excuteCommand(command);
+        assertEquals("0 0 W",marsRover.toString());
+    }
+    public void should_return_direction_N_when_input_command_R_direction_W() {
+        String command = "R";
+        MarsRover marsRover = new MarsRover(0, 0, "W");
+        marsRover.excuteCommand(command);
+        assertEquals("0 0 N",marsRover.toString());
+    }
 }
