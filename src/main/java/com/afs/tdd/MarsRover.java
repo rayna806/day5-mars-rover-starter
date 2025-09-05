@@ -1,6 +1,12 @@
 package com.afs.tdd;
 
 public class MarsRover {
+    public static final String Move = "M";
+    public static final String Left = "L";
+    public static final String Right = "R";
+    public static final String North = "N";
+    public static final String South = "S";
+    public static final String East = "E";
     private int x;
     private int y;
     private String direction;
@@ -20,38 +26,53 @@ public class MarsRover {
         return y;
     }
 
-    public void excuteCommand(String command) {
-        if ("M".equals(command)) {
-            if (direction.equals("N")) {
-                y++;
-            } else if (direction.equals("S")) {
-                y--;
-            } else if (direction.equals("E")) {
-                x++;
-            } else {
-                x--;
+    public void executeCommand(String command) {
+        if (Move.equals(command)) {
+            switch (direction) {
+                case North:
+                    y++;
+                    break;
+                case South:
+                    y--;
+                    break;
+                case East:
+                    x++;
+                    break;
+                default:
+                    x--;
+                    break;
             }
         }
-        if ("L".equals(command)) {
-            if (direction.equals("N")) {
-                direction = "W";
-            } else if (direction.equals("W")) {
-                direction = "S";
-            } else if (direction.equals("S")) {
-                direction = "E";
-            } else {
-                direction = "N";
+        if (Left.equals(command)) {
+            switch (direction) {
+                case North:
+                    direction = "W";
+                    break;
+                case "W":
+                    direction = South;
+                    break;
+                case South:
+                    direction = East;
+                    break;
+                default:
+                    direction = North;
+                    break;
             }
         }
-        else if ("R".equals(command)) {
-            if (direction.equals("N")) {
-                direction = "E";
-            } else if (direction.equals("E")) {
-                direction = "S";
-            } else if (direction.equals("S")) {
-                direction = "W";
-            } else {
-                direction = "N";
+        else if (Right.equals(command)) {
+            switch (direction) {
+                case North:
+                    direction = East;
+                    break;
+                case East:
+                    direction = South;
+                    break;
+                case South:
+                    direction = "W";
+                    break;
+                default:
+                    direction = North;
+                    break;
             }
         }
 
