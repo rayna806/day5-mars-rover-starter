@@ -3,7 +3,8 @@ package com.afs.tdd;
 public enum Command {
     MOVE("M"),
     LEFT("L"),
-    RIGHT("R");
+    RIGHT("R"),
+    MOVE_BACKWARD("B");
 
     private final String code;
 

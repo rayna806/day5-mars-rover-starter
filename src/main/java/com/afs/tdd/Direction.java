@@ -3,7 +3,9 @@ package com.afs.tdd;
 public enum Direction {
     NORTH("N") {
         @Override
-        public Direction turnLeft() {return WEST;}
+        public Direction turnLeft() {
+            return WEST;
+        }
 
         @Override
         public Direction turnRight() {
@@ -11,8 +13,13 @@ public enum Direction {
         }
 
         @Override
-        public Position move(Position position) {
+        public Position moveForward(Position position) {
             return new Position(position.getX(), position.getY() + 1);
+        }
+
+        @Override
+        public Position moveBackward(Position position) {
+            return new Position(position.getX(), position.getY() - 1);
         }
     },
     SOUTH("S") {
@@ -27,8 +34,13 @@ public enum Direction {
         }
 
         @Override
-        public Position move(Position position) {
+        public Position moveForward(Position position) {
             return new Position(position.getX(), position.getY() - 1);
+        }
+
+        @Override
+        public Position moveBackward(Position position) {
+            return new Position(position.getX(), position.getY() + 1);
         }
     },
     EAST("E") {
@@ -43,8 +55,13 @@ public enum Direction {
         }
 
         @Override
-        public Position move(Position position) {
+        public Position moveForward(Position position) {
             return new Position(position.getX() + 1, position.getY());
+        }
+
+        @Override
+        public Position moveBackward(Position position) {
+            return new Position(position.getX() - 1, position.getY());
         }
     },
     WEST("W") {
@@ -59,8 +76,13 @@ public enum Direction {
         }
 
         @Override
-        public Position move(Position position) {
+        public Position moveForward(Position position) {
             return new Position(position.getX() - 1, position.getY());
+        }
+
+        @Override
+        public Position moveBackward(Position position) {
+            return new Position(position.getX() + 1, position.getY());
         }
     };
 
@@ -85,7 +107,8 @@ public enum Direction {
 
     public abstract Direction turnLeft();
     public abstract Direction turnRight();
-    public abstract Position move(Position position);
+    public abstract Position moveForward(Position position);
+    public abstract Position moveBackward(Position position);
 
     @Override
     public String toString() {

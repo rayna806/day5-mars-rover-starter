@@ -21,7 +21,10 @@ public class MarsRover {
         Command cmd = Command.fromCode(command);
         switch (cmd) {
             case MOVE:
-                position = direction.move(position);
+                position = direction.moveForward(position);
+                break;
+            case MOVE_BACKWARD:
+                position = direction.moveBackward(position);
                 break;
             case LEFT:
                 direction = direction.turnLeft();
